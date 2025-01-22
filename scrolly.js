@@ -31,7 +31,19 @@ document.addEventListener("DOMContentLoaded", async function () {
 });
 
 function createAllScrollyContentInHTML(allScrollyData) {
+  createStoryContentInHtml(allScrollyData.storyData);
   createStepsContentInHtml(allScrollyData.stepData);
+}
+
+function createStoryContentInHtml(storyData) {
+  const title = document.getElementById("title");
+  title.innerHTML = storyData.title;
+
+  const subtitle = document.getElementById("subtitle");
+  subtitle.innerHTML = storyData.subtitle;
+
+  const endText = document.getElementById("end-text");
+  endText.innerHTML = storyData.endText;
 }
 
 /* This creates all the steps in HTML for the scrolly story 
@@ -59,7 +71,7 @@ function createStepsContentInHtml(stepDataArray) {
       stepElement.dataset.zoomLevel = stepData.zoomLevel;
     }
 
-    stepElement.innerHTML = `<p>${stepData.text}</p>`;
+    stepElement.innerHTML = `<p class="step-content">${stepData.text}</p>`;
     story.appendChild(stepElement);
     stepNumber++;
   });
